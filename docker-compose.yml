@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    container_name: cms_database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=yourpassword123
+    volumes:
+      - "~/Data/CMS/DB:/var/lib/postgresql/data"
