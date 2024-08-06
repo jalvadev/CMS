@@ -11,3 +11,8 @@ services:
       - POSTGRES_PASSWORD=yourpassword123
     volumes:
       - "~/Data/CMS/DB:/var/lib/postgresql/data"
+  server:
+    build:
+      context: ./server/
+    ports:
+      - "8080:8080"
