@@ -7,12 +7,16 @@ services:
     ports:
       - "5432:5432"
     environment:
+      - POSTGRES_DB=cms
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=yourpassword123
     volumes:
+      - "./init_db/create_db.sh:/docker-entrypoint-initdb.d/create_database.sh"
       - "~/Data/CMS/DB:/var/lib/postgresql/data"
   server:
     build:
       context: ./server/
     ports:
       - "8080:8080"
+    depends_on:
+      - db
